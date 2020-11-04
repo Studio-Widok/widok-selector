@@ -2,7 +2,7 @@
   "name": "widok-selector",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
+  "main": "src/js/main.js",
   "scripts": {
     "watch": "webpack --watch"
   },
@@ -21,6 +21,6 @@
     "webpack-cli": "^3.3.12"
   },
   "files": [
-    "dist/main.js"
+    "src/js/main.js"
   ]
 }
