@@ -127,4 +127,4 @@ function createSelector(selector) {
   return select;
 }
 
-createSelector('.select-wrap');
+module.exports = createSelector;
