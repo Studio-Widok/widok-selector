@@ -1,13 +1,16 @@
 /**
  * singleElement '.select-option'
+ *
+ * @param {function} settings.onSelect
  */
 
 const $ = require('cash-dom');
 require('widok');
 
 class Select {
-  constructor(obj, id) {
+  constructor(obj, id, settings) {
     this.obj = $(obj);
+    this.settings = settings;
     this.identifier = this.obj.attr('id');
     this.id = id;
     this.expanded = false;
@@ -53,6 +56,9 @@ class Select {
     this.selected = id;
     this.options[this.selected].obj.addClass('checked');
     this.shrink();
+    if (this.settings.onSelect !== undefined) {
+      this.settings.onSelect.call(this, this, this.options[this.selected]);
+    }
   }
 
   adjust() {
@@ -121,8 +127,8 @@ function resize() {
 window.addEventListener('layoutChange', resize);
 
 const selects = [];
-function createSelector(selector) {
-  const select = new Select(selector, selects.length);
+function createSelector(selector, settings = {}) {
+  const select = new Select(selector, selects.length, settings);
   selects.push(select);
   return select;
 }
