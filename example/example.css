@@ -1,11 +1,8 @@
 .select-wrap {
   overflow: hidden;
   position: relative;
-  transition: .3s;
-  width: 20em;
-  margin: 3em auto;
+  transition: 0.3s;
   background-color: #ddd;
-  border-radius: 1em;
 }
 
 .select-wrap:hover {
@@ -13,12 +10,12 @@
 }
 
 .select-adjuster {
-  transition: margin .3s;
+  transition: margin 0.3s;
 }
 
 .select-option {
-  transition: .3s;
-  padding: .5em;
+  transition: 0.3s;
+  padding: 0.5em;
 }
 
 .select-option:hover {
@@ -45,12 +42,14 @@
 .arrow-down {
   position: absolute;
   top: 50%;
-  margin-top: -.5em;
-  right: .5em;
+  right: 0.5em;
+  margin-top: -1em;
+  width: 2em;
   cursor: pointer;
   line-height: 1;
+  transition: 0.3s;
 }
 
-.arrow-down:hover {
-  color: #f55;
+.select-wrap.expanded .arrow-down {
+  transform: rotate(180deg);
 }
