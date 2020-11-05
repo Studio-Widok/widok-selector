@@ -14,10 +14,6 @@ class Select {
     this.identifier = this.obj.attr('id');
     this.id = id;
     this.expanded = false;
-    this.selected = 0;
-    this.options = this.obj
-      .find('.select-option')
-      .map((index, element) => new Option(element, this, index));
     this.overlay = $(document.createElement('div')).addClass('select-overlay');
     this.overlay.on('click', event => {
       this.expand();
@@ -36,11 +32,23 @@ class Select {
       }
     });
 
+    this.initOptions();
+  }
+
+  initOptions() {
+    this.selected = 0;
+
+    this.options = this.obj
+      .find('.select-option')
+      .map((index, element) => new Option(element, this, index));
+
     this.options.map((index, element) => {
       if (element.obj.hasClass('checked')) {
         this.select(element.id);
       }
     });
+
+    this.resize();
   }
 
   resize() {
