@@ -10,6 +10,7 @@ require('widok');
 class Select {
   constructor(obj, id, settings) {
     this.obj = $(obj);
+    this.wrap = this.obj.parent();
     this.settings = settings;
     this.identifier = this.obj.attr('id');
     this.id = id;
@@ -44,7 +45,7 @@ class Select {
 
     this.options.map((index, element) => {
       if (element.obj.hasClass('checked')) {
-        this.select(element.id);
+        this.select(element.id, true);
       }
     });
 
@@ -59,7 +60,8 @@ class Select {
     this.shrink();
   }
 
-  select(id) {
+  select(id, init = false) {
+    if (!init) this.obj.addClass('selected');
     this.options[this.selected].obj.removeClass('checked');
     this.selected = id;
     this.options[this.selected].obj.addClass('checked');
@@ -73,7 +75,7 @@ class Select {
     this.obj.css({
       height: this.options[this.selected].height,
     });
-    this.obj.parent().css({
+    this.wrap.css({
       height: this.options[this.selected].height,
     });
     this.adjuster.css({
