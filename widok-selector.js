@@ -63,11 +63,17 @@ class Select {
   select(id, init = false) {
     if (!init) this.obj.addClass('selected');
     this.options[this.selected].obj.removeClass('checked');
+    const previous = this.selected;
     this.selected = id;
     this.options[this.selected].obj.addClass('checked');
     this.shrink();
     if (this.settings.onSelect !== undefined) {
-      this.settings.onSelect.call(this, this, this.options[this.selected]);
+      this.settings.onSelect.call(
+        this,
+        this,
+        this.options[this.selected],
+        previous
+      );
     }
   }
 
