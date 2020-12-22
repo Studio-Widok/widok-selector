@@ -4,8 +4,8 @@
  * @param {function} settings.onSelect
  */
 
-const $ = require('cash-dom');
-require('widok');
+import $ from 'cash-dom';
+import 'widok';
 
 class Select {
   constructor(obj, id, settings) {
@@ -149,4 +149,4 @@ function createSelector(selector, settings = {}) {
   return select;
 }
 
-module.exports = createSelector;
+export default createSelector;
